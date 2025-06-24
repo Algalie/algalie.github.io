@@ -1,0 +1,1469 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Base Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f7fa;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Alert Messages */
+.alert {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 4px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s forwards;
+}
+
+.alert-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.alert-error {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Welcome Page */
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../static/students-concentrating-exam-hall-focused-atmosphere-professional-setting-finals-students-concentrating-exam-hall-347981199.jpg');
+  background-size: cover;
+  display: flex;
+  
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.welcome-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.welcome-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.btn i {
+  margin-right: 0.5rem;
+}
+
+.btn-login {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.btn-signup {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-login:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-signup:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.university-motto {
+  margin-top: 2rem;
+  font-style: italic;
+  opacity: 0.8;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Auth Pages */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 2rem;
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../static/close-up-photo-of-man-hands-writing-notes-in-a-notebook-during-lecture-at-college.jpg');
+  background-size: cover;
+  display: flex;
+}
+
+.auth-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.auth-header h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+.auth-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.auth-footer a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.auth-footer a:hover {
+  color: #2980b9;
+}
+
+.back-home {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--dark-color);
+}
+
+/* Admin Dashboard */
+.dashboard-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.dashboard-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-logo {
+  height: 40px;
+  width: auto;
+}
+
+.dashboard-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dashboard-header h1 strong {
+  font-weight: 700;
+  color: var(--light-color);
+}
+
+.logout-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  color: var(--light-color);
+  transform: translateX(-3px);
+}
+
+.dashboard-content {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.dashboard-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.section-icon {
+  width: 70px;
+  height: 70px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-icon i {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+}
+
+.dashboard-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.dashboard-section p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.section-btn {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.section-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .welcome-container h1 {
+      font-size: 2rem;
+  }
+  
+  .welcome-container h2 {
+      font-size: 1.5rem;
+  }
+  
+  .auth-buttons {
+      flex-direction: column;
+      gap: 1rem;
+  }
+  
+  .dashboard-content {
+      grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+  }
+}
+
+/* GPA Calculator Styles */
+.gpa-calculator-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.gpa-calculator-form {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.module-group {
+  margin-bottom: 0;
+}
+
+.form-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.btn-calculate {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: flex-start;
+}
+
+.btn-calculate:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+.calculation-result {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.result-label {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.result-value {
+  font-weight: 500;
+}
+
+.result-message {
+  color: var(--danger-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.btn-save {
+  background-color: var(--success-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.btn-save:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+select:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-row {
+      flex-direction: column;
+      gap: 1rem;
+  }
+  
+  .modules-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+
+/* View Transcripts Styles */
+.transcripts-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.search-section {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.search-options {
+  display: flex;
+  gap: 2rem;
+}
+
+.search-options .form-group {
+  margin-bottom: 0;
+}
+
+.search-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.search-input-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-input-group input {
+  flex: 1;
+}
+
+.btn-retrieve {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-retrieve:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+.student-details {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.student-details h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.detail-item {
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  width: 120px;
+}
+
+.module-grades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.grade-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grade-label {
+  font-weight: 500;
+}
+
+.grade-value {
+  font-weight: 600;
+}
+
+.summary {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.summary-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.summary-label {
+  font-weight: 600;
+}
+
+.summary-value {
+  font-weight: 500;
+}
+
+.department-results {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+  overflow-x: auto;
+}
+
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.records-table th, .records-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.records-table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+.records-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.records-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.table-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em;
+}
+
+.module-grades-edit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.grade-edit {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.grade-input {
+  width: 30px;
+  padding: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gpa-input, .status-input {
+  background-color: #f5f5f5;
+}
+
+.btn-table {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-save {
+  background-color: var(--success-color);
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.btn-save:hover {
+  background-color: #27ae60;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .records-table {
+      display: block;
+      overflow-x: auto;
+  }
+  
+  .module-grades-edit {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-options {
+      flex-direction: column;
+      gap: 1rem;
+  }
+  
+  .summary {
+      flex-direction: column;
+      gap: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* Student Records Results Styles */
+.student-results {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.student-record-group {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+}
+
+.student-record-group:last-child {
+  border-bottom: none;
+}
+
+.student-record-group h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.record-accordion {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.record-item {
+  margin-bottom: 0.5rem;
+}
+
+.record-header {
+  background-color: #f8f9fa;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.record-header:hover {
+  background-color: #e9ecef;
+}
+
+.record-summary {
+  font-weight: 500;
+}
+
+.record-details {
+  padding: 1rem;
+  background-color: #fdfdfd;
+  border: 1px solid #eee;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.record-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.btn-edit {
+  background-color: var(--warning-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-edit:hover {
+  background-color: #e67e22;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .record-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
+  
+  .record-actions {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+}
+
+
+
+/* Student Portal Styles */
+.student-welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e5799, #207cca);
+    color: rgb(245, 245, 245);
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../static/360_F_579485026_Fb2LO9GgmNKkOi18LjoBVAk1wUtZG2DE.jpg');
+    background-size: cover;
+  display: flex;
+}
+
+.student-dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+}
+
+.results-form-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.results-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: white;
+    position: relative;
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #1e5799;
+    padding-bottom: 1rem;
+}
+
+.result-header h2 {
+    color: #1e5799;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-header h3 {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.result-logo {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+.result-body {
+    margin-bottom: 2rem;
+}
+
+.result-item {
+    display: flex;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.result-label {
+    font-weight: 600;
+    color: #333;
+    width: 150px;
+}
+
+.result-value {
+    color: #555;
+}
+
+.module-grades {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.result-summary {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.summary-item {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.summary-label {
+    font-weight: 600;
+}
+
+.summary-value {
+    font-weight: 500;
+}
+
+.result-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.signature {
+    text-align: center;
+}
+
+.signature-line {
+    width: 200px;
+    height: 1px;
+    background-color: #333;
+    margin: 0 auto 0.5rem;
+}
+
+.btn-download {
+    background-color: #1e5799;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-download:hover {
+    background-color: #154270;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 87, 153, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .result-item {
+        flex-direction: column;
+    }
+    
+    .result-label {
+        width: auto;
+        margin-bottom: 0.3rem;
+    }
+    
+    .result-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    
+    .module-grades {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Student Portal Styles */
+.student-welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e5799, #207cca);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('../static/29781772-0-image-a-49_1592492877911.jpg');
+  background-size: cover;
+  display: flex;
+}
+
+.student-dashboard-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.results-form-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: white;
+  position: relative;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #1e5799;
+  padding-bottom: 1rem;
+}
+
+.result-header h2 {
+  color: #1e5799;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.result-header h3 {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.result-logo {
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.result-body {
+  margin-bottom: 2rem;
+}
+
+.result-item {
+  display: flex;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.result-label {
+  font-weight: 600;
+  color: #333;
+  width: 150px;
+}
+
+.result-value {
+  color: #555;
+}
+
+.module-grades {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.result-summary {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.summary-item {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.summary-label {
+  font-weight: 600;
+}
+
+.summary-value {
+  font-weight: 500;
+}
+
+.result-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.signature {
+  text-align: center;
+}
+
+.signature-line {
+  width: 200px;
+  height: 1px;
+  background-color: #333;
+  margin: 0 auto 0.5rem;
+}
+
+.btn-download {
+  background-color: #1e5799;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-download:hover {
+  background-color: #154270;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(30, 87, 153, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .result-item {
+      flex-direction: column;
+  }
+  
+  .result-label {
+      width: auto;
+      margin-bottom: 0.3rem;
+  }
+  
+  .result-footer {
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+  }
+  
+  .module-grades {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="gpa-calculator-container">
+        <div class="dashboard-header">
+            <img src="{{ url_for('static', filename='mmtc-logo.jpg') }}" alt="MMUTech Logo" class="dashboard-logo">
+            <h1>GPA Calculator</h1>
+            <a href="{{ url_for('admin_dashboard') }}" class="logout-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </div>
+        
+        <div class="gpa-calculator-form">
+            <form method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="student_name">Student Name</label>
+                        <input type="text" id="student_name" name="student_name" 
+                               value="{{ student_data.student_name if student_data else '' }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="student_id">Student ID</label>
+                        <input type="text" id="student_id" name="student_id" 
+                               value="{{ student_data.student_id if student_data else '' }}" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <select id="department" name="department" required>
+                            <option value="">Select Department</option>
+                            {% for dept in departments %}
+                                <option value="{{ dept }}" {% if student_data and student_data.department == dept %}selected{% endif %}>
+                                    {{ dept }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <select id="level" name="level" required>
+                            <option value="">Select Level</option>
+                            {% for level in levels %}
+                                <option value="{{ level }}" {% if student_data and student_data.level == level %}selected{% endif %}>
+                                    {{ level }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <select id="semester" name="semester" required>
+                            <option value="">Select Semester</option>
+                            {% for semester in semesters %}
+                                <option value="{{ semester }}" {% if student_data and student_data.semester == semester %}selected{% endif %}>
+                                    {{ semester }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                
+                <h3>Module Grades (A, B, C, D, E, F)</h3>
+                
+                <div class="modules-grid">
+                    {% for i in range(1, 11) %}
+                        <div class="form-group module-group">
+                            <label for="module{{ i }}">Module {{ i }}</label>
+                            <input type="text" id="module{{ i }}" name="module{{ i }}" 
+                                   maxlength="1" pattern="[A-Fa-f]" 
+                                   value="{{ student_data.grades[i-1] if student_data and student_data.grades[i-1] else '' }}"
+                                   title="Please enter a grade between A-F">
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" name="calculate" class="btn btn-calculate">
+                        <i class="fas fa-calculator"></i> Calculate GPA
+                    </button>
+                    
+                    {% if result %}
+                        <div class="calculation-result">
+                            {% if result.message %}
+                                <div class="result-message">{{ result.message }}</div>
+                            {% else %}
+                                <div class="result-item">
+                                    <span class="result-label">Total GPA:</span>
+                                    <span class="result-value">{{ result.total_gpa }}</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="result-label">Status:</span>
+                                    <span class="result-value">{{ result.status }}</span>
+                                </div>
+                                
+                                <!-- Hidden fields for saving -->
+                                <input type="hidden" name="total_gpa" value="{{ result.total_gpa }}">
+                                <input type="hidden" name="status" value="{{ result.status }}">
+                                
+                                <button type="submit" name="save" class="btn btn-save">
+                                    <i class="fas fa-save"></i> Save Record
+                                </button>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
