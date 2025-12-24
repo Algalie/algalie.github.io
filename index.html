@@ -3,29 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algalie Kamara | Programmer & Database Administrator</title>
+    <title>Algalie Kamara | Software Developer & Database Administrator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #D4AF37; /* Dark yellow/gold */
-            --secondary: #7B3F00; /* Chocolate brown */
-            --light: #FFFFFF;
-            --dark: #333333;
-            --gray: #777777;
-            --light-gray: #F5F5F5;
+            /* Modern Professional Color Scheme */
+            --primary: #2563EB; /* Professional Blue */
+            --primary-dark: #1D4ED8;
+            --secondary: #0F172A; /* Dark Navy */
+            --accent: #8B5CF6; /* Professional Purple */
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --light-gray: #F1F5F9;
+            --success: #10B981;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --box-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
         }
         
         .container {
@@ -36,12 +58,19 @@
         
         /* Header Styles */
         header {
-            background-color: var(--light);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         
         nav {
@@ -49,231 +78,302 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            transition: var(--transition);
         }
         
         .logo {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
         
-        .logo img {
+        .logo-circle {
+            width: 40px;
             height: 40px;
-            margin-right: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
         }
         
-        .logo h1 {
+        .logo-text {
             font-size: 1.5rem;
-            color: var(--secondary);
             font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
+            gap: 40px;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s;
             position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
+            padding: 5px 0;
+            transition: var(--transition);
         }
         
         .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            background: var(--primary);
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
             bottom: -5px;
             left: 0;
-            transition: width 0.3s;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
         }
         
         .nav-links a:hover::after {
             width: 100%;
         }
         
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
         .hamburger {
             display: none;
             cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--secondary);
         }
         
         /* Hero Section */
         .hero {
-            padding: 150px 0 100px;
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--light) 100%);
-            text-align: center;
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0) 70%);
+            top: -250px;
+            right: -250px;
         }
         
         .hero-content {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
         }
         
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-            padding-right: 30px;
-        }
-        
-        .hero-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
+        .hero-text h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--secondary);
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
         }
         
-        .hero h3 {
-            font-size: 1.5rem;
+        .hero-text h2 {
+            font-size: 1.8rem;
             color: var(--primary);
-            margin-bottom: 20px;
-            font-weight: 400;
+            margin-bottom: 25px;
+            font-weight: 500;
         }
         
-        .hero p {
+        .hero-text p {
             font-size: 1.1rem;
             color: var(--gray);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.05);
+            transform: translateY(-3px);
         }
         
         .social-icons {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
         }
         
         .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background-color: var(--light-gray);
+            background-color: white;
             color: var(--dark);
-            transition: all 0.3s;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
         
         .social-icons a:hover {
-            background-color: var(--primary);
-            color: var(--light);
             transform: translateY(-5px);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: var(--light);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            margin-top: 20px;
-            border: 2px solid var(--primary);
-        }
-        
-        .cta-button:hover {
-            background-color: transparent;
             color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            box-shadow: var(--box-shadow-hover);
         }
         
-        /* About Section */
-        .about {
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+            box-shadow: var(--box-shadow-hover);
+            animation: morphing 15s infinite;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+        
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        /* Section Common Styles */
+        section {
             padding: 100px 0;
-            background-color: var(--light);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
         
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--secondary);
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
-            padding-bottom: 15px;
         }
         
         .section-title h2::after {
             content: '';
             position: absolute;
             width: 70px;
-            height: 3px;
-            background-color: var(--primary);
-            bottom: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 25px auto 0;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
         }
         
         .about-content {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
         }
         
         .about-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-            padding: 20px;
+            position: relative;
         }
         
-        .about-image img {
+        .about-img-container {
             width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.5s;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-hover);
         }
         
-        .about-image img:hover {
+        .about-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img-container:hover img {
             transform: scale(1.05);
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
         }
         
         .about-text h3 {
@@ -283,83 +383,122 @@
         }
         
         .about-text p {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             color: var(--gray);
         }
         
-        .skills {
+        .skills-container {
             margin-top: 30px;
         }
         
-        .skills h4 {
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
         .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-item {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .skill {
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
             background-color: var(--light-gray);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--dark);
-            transition: all 0.3s;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
         }
         
-        .skill:hover {
-            background-color: var(--primary);
-            color: var(--light);
-            transform: translateY(-3px);
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background-color: white;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
         }
         
         /* Portfolio Section */
         .portfolio {
-            padding: 100px 0;
             background-color: var(--light-gray);
         }
         
-        .portfolio-items {
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
         
         .portfolio-item {
-            background-color: var(--light);
-            border-radius: 10px;
+            background-color: white;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .portfolio-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-15px);
+            box-shadow: var(--box-shadow-hover);
         }
         
-        .portfolio-image {
-            height: 200px;
+        .portfolio-img {
+            height: 220px;
             overflow: hidden;
         }
         
-        .portfolio-image img {
+        .portfolio-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.5s ease;
         }
         
-        .portfolio-item:hover .portfolio-image img {
+        .portfolio-item:hover .portfolio-img img {
             transform: scale(1.1);
         }
         
         .portfolio-info {
-            padding: 20px;
+            padding: 25px;
         }
         
         .portfolio-info h3 {
@@ -370,75 +509,75 @@
         
         .portfolio-info p {
             color: var(--gray);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
         
         .portfolio-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 20px;
         }
         
         .portfolio-tag {
             background-color: var(--light-gray);
-            padding: 5px 10px;
-            border-radius: 5px;
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
             font-size: 0.8rem;
-            color: var(--dark);
+            font-weight: 500;
         }
         
         .portfolio-links {
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
         
         .portfolio-links a {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: var(--primary);
-            color: var(--light);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
             text-decoration: none;
-            border-radius: 5px;
+            font-weight: 500;
             font-size: 0.9rem;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .portfolio-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
+            color: var(--primary-dark);
+            gap: 12px;
         }
         
         /* Experience Section */
         .experience {
-            padding: 100px 0;
-            background-color: var(--light);
+            background-color: white;
         }
         
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 0;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
-            width: 2px;
-            background-color: var(--primary);
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -1px;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
         
         .timeline-item {
-            padding: 10px 40px;
             position: relative;
+            margin-bottom: 50px;
             width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 30px;
+            padding: 0 40px;
         }
         
         .timeline-item:nth-child(odd) {
@@ -450,42 +589,58 @@
         }
         
         .timeline-content {
-            padding: 20px;
-            background-color: var(--light);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
             position: relative;
+            transition: var(--transition);
         }
         
-        .timeline-content::after {
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
             content: '';
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: var(--light);
-            border: 3px solid var(--primary);
-            border-radius: 50%;
+            background-color: white;
+            transform: rotate(45deg);
             top: 30px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content::after {
             right: -10px;
+            box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.05);
         }
         
         .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            transform: rotate(45deg);
+            top: 30px;
             left: -10px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.05);
         }
         
         .timeline-date {
-            color: var(--primary);
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         
         .timeline-title {
             font-size: 1.2rem;
-            color: var(--secondary);
             margin-bottom: 10px;
+            color: var(--secondary);
         }
         
         .timeline-text {
@@ -494,54 +649,52 @@
         
         /* Contact Section */
         .contact {
-            padding: 100px 0;
             background-color: var(--light-gray);
         }
         
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-top: 50px;
         }
         
         .contact-card {
-            background-color: var(--light);
-            padding: 30px;
-            border-radius: 10px;
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            width: 250px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
         
         .contact-card:hover {
             transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
         }
         
         .contact-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary);
-            color: var(--light);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
+            color: white;
             font-size: 1.5rem;
         }
         
         .contact-card h3 {
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--secondary);
         }
         
         .contact-card p, .contact-card a {
             color: var(--gray);
             text-decoration: none;
+            transition: var(--transition);
         }
         
         .contact-card a:hover {
@@ -551,58 +704,130 @@
         /* Footer */
         footer {
             background-color: var(--secondary);
-            color: var(--light);
-            padding: 30px 0;
-            text-align: center;
+            color: white;
+            padding: 70px 0 30px;
         }
         
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
         }
         
         .footer-logo {
             display: flex;
             align-items: center;
+            gap: 15px;
             margin-bottom: 20px;
         }
         
-        .footer-logo img {
-            height: 30px;
-            margin-right: 10px;
-        }
-        
-        .footer-logo h2 {
-            font-size: 1.2rem;
-        }
-        
-        .footer-links {
+        .footer-logo-circle {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 10px;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        
+        .footer-links ul {
             list-style: none;
-            margin-bottom: 20px;
         }
         
         .footer-links li {
-            margin: 0 15px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            color: var(--light);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
         
         .footer-links a:hover {
-            color: var(--primary);
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
         }
         
         /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .image-container {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: auto;
+                right: -10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
@@ -610,70 +835,92 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background-color: var(--light);
+                background-color: white;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                transition: left 0.5s;
+                justify-content: flex-start;
+                padding-top: 60px;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 999;
             }
             
             .nav-links.active {
                 left: 0;
             }
             
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
             .hamburger {
                 display: block;
             }
             
-            .hero-content, .about-content {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 1.5rem;
+            }
+            
+            .image-container {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero {
+                padding: 130px 0 70px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
                 flex-direction: column;
-                text-align: center;
             }
             
-            .hero-text, .about-text {
-                padding-right: 0;
-                margin-bottom: 30px;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .timeline::before {
-                left: 31px;
+            .section-title h2 {
+                font-size: 2rem;
             }
             
             .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+                padding-left: 60px;
             }
             
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-content::after {
-                left: 21px !important;
+            .timeline-content {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="mmtc-logo.jpg" alt="Milton Margai Technical University Logo">
-                    <h1>Algalie Kamara</h1>
+                    <div class="logo-circle">AK</div>
+                    <div class="logo-text">Algalie<span>Kamara</span></div>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#experience">Experience</a></li>
@@ -691,10 +938,13 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h2>Hello, I'm Algalie Kamara</h2>
-                    <h3>Programmer & Database Administrator</h3>
-                    <p>Third-year Computer Science student at Milton Margai Technical University with 2 years of real-world experience in software development and database management. Specializing in Python, Flask, HTML/CSS, JavaScript, and SQL Server.</p>
-                    <a href="#contact" class="cta-button">Get In Touch</a>
+                    <h1>Innovative Solutions Through Code & Data</h1>
+                    <h2>Software Developer & Database Administrator</h2>
+                    <p>Third-year Computer Science student at Milton Margai Technical University with 2+ years of professional experience in full-stack development and database management. Specializing in Python, Flask, SQL Server, and modern web technologies.</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
                     <div class="social-icons">
                         <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://linkedin.com/in/Algalie Kamara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -703,7 +953,9 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="IMG-20250204-WA0008.jpg" alt="Algalie Kamara">
+                    <div class="image-container">
+                        <img src="IMG-20250204-WA0008.jpg" alt="Algalie Kamara">
+                    </div>
                 </div>
             </div>
         </div>
@@ -714,27 +966,57 @@
         <div class="container">
             <div class="section-title">
                 <h2>About Me</h2>
+                <p>Combining academic excellence with practical experience to deliver innovative technology solutions</p>
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="IMG-20250612-WA0025.jpg" alt="Algalie Kamara">
+                    <div class="about-img-container">
+                        <img src="IMG-20250612-WA0025.jpg" alt="Algalie Kamara">
+                    </div>
                 </div>
                 <div class="about-text">
-                    <h3>Computer Science Student & Tech Enthusiast</h3>
-                    <p>I'm a passionate programmer and database administrator based in Freetown, Sierra Leone. Currently in my third year studying Computer Science at Milton Margai Technical University, I combine academic knowledge with practical experience to deliver robust solutions.</p>
-                    <p>With 2 years of hands-on experience in software development and database management, I've worked on various projects ranging from university systems to e-commerce platforms.</p>
-                    <div class="skills">
-                        <h4>Technical Skills</h4>
+                    <h3>Building Digital Solutions That Matter</h3>
+                    <p>I'm a passionate software developer and database administrator based in Freetown, Sierra Leone. Currently pursuing my BSc in Computer Science at Milton Margai Technical University, I bridge the gap between academic theory and real-world application.</p>
+                    <p>With over 2 years of professional experience, I've developed a strong foundation in both front-end and back-end technologies, with a particular focus on database design, optimization, and management.</p>
+                    <div class="skills-container">
+                        <h4>Technical Expertise</h4>
                         <div class="skills-list">
-                            <div class="skill">Python</div>
-                            <div class="skill">Flask</div>
-                            <div class="skill">HTML/CSS</div>
-                            <div class="skill">JavaScript</div>
-                            <div class="skill">SQL Server</div>
-                            <div class="skill">Database Design</div>
-                            <div class="skill">REST APIs</div>
-                            <div class="skill">Git</div>
-                            <div class="skill">Problem Solving</div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div>
+                                    <h5>Python & Flask</h5>
+                                    <p>Backend Development</p>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div>
+                                    <h5>SQL Server</h5>
+                                    <p>Database Administration</p>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div>
+                                    <h5>JavaScript</h5>
+                                    <p>Frontend Development</p>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div>
+                                    <h5>HTML/CSS</h5>
+                                    <p>Web Design</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -747,102 +1029,113 @@
         <div class="container">
             <div class="section-title">
                 <h2>My Portfolio</h2>
+                <p>A selection of my recent projects showcasing my technical skills and problem-solving abilities</p>
             </div>
-            <div class="portfolio-items">
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="database">Database</button>
+                <button class="filter-btn" data-filter="university">University Projects</button>
+            </div>
+            <div class="portfolio-grid">
                 <!-- Project 1 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+                <div class="portfolio-item visible" data-category="web university">
+                    <div class="portfolio-img">
                         <img src="Capture.PNG" alt="University GPA Grading System">
                     </div>
                     <div class="portfolio-info">
                         <h3>University GPA Grading System</h3>
-                        <p>A comprehensive system for calculating and managing student GPAs, developed for Milton Margai Technical University.</p>
+                        <p>A comprehensive system for calculating and managing student GPAs, developed for Milton Margai Technical University with Flask backend and SQL Server database.</p>
                         <div class="portfolio-tags">
-                            <div class="portfolio-tag">Python</div>
-                            <div class="portfolio-tag">Flask</div>
-                            <div class="portfolio-tag">SQL Server</div>
+                            <span class="portfolio-tag">Python</span>
+                            <span class="portfolio-tag">Flask</span>
+                            <span class="portfolio-tag">SQL Server</span>
+                            <span class="portfolio-tag">University</span>
                         </div>
                         <div class="portfolio-links">
-                          <a href="gpa_calculator.html" target="_blank">View Demo</a>
-                            <a href="https://github.com/yourusername/gpa-system" target="_blank">GitHub</a>
+                            <a href="gpa_calculator.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/yourusername/gpa-system" target="_blank"><i class="fab fa-github"></i> Source Code</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+                <div class="portfolio-item visible" data-category="web university">
+                    <div class="portfolio-img">
                         <img src="Capture2.PNG" alt="Student Portal">
                     </div>
                     <div class="portfolio-info">
                         <h3>Student Portal</h3>
-                        <p>An interactive portal for students to access course materials, grades, and university announcements.</p>
+                        <p>An interactive portal for students to access course materials, grades, and university announcements with responsive design and secure authentication.</p>
                         <div class="portfolio-tags">
-                            <div class="portfolio-tag">HTML/CSS</div>
-                            <div class="portfolio-tag">JavaScript</div>
-                            <div class="portfolio-tag">Python</div>
-                            <div class="portfolio-tag">Flask</div>
+                            <span class="portfolio-tag">HTML/CSS</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                            <span class="portfolio-tag">Python</span>
+                            <span class="portfolio-tag">Flask</span>
                         </div>
                         <div class="portfolio-links">
-                            <a href="student_results.html" target="_blank">View Demo</a>
-                            <a href="https://github.com/yourusername/student-portal" target="_blank">GitHub</a>
+                            <a href="student_results.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/yourusername/student-portal" target="_blank"><i class="fab fa-github"></i> Source Code</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+                <div class="portfolio-item visible" data-category="web database">
+                    <div class="portfolio-img">
                         <img src="Capture3.PNG" alt="E-commerce Platform">
                     </div>
                     <div class="portfolio-info">
                         <h3>E-commerce Platform</h3>
-                        <p>A full-featured online shopping platform with product management, cart functionality, and payment processing.</p>
+                        <p>A full-featured online shopping platform with product management, cart functionality, payment processing, and advanced database design.</p>
                         <div class="portfolio-tags">
-                            <div class="portfolio-tag">Python</div>
-                            <div class="portfolio-tag">Flask</div>
-                            <div class="portfolio-tag">SQL Server</div>
-                            <div class="portfolio-tag">JavaScript</div>
+                            <span class="portfolio-tag">Python</span>
+                            <span class="portfolio-tag">Flask</span>
+                            <span class="portfolio-tag">SQL Server</span>
+                            <span class="portfolio-tag">JavaScript</span>
                         </div>
                         <div class="portfolio-links">
-                            <a href="index copy.html" target="_blank">View Demo</a>
-                            <a href="https://github.com/yourusername/ecommerce-platform" target="_blank">GitHub</a>
+                            <a href="index copy.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/yourusername/ecommerce-platform" target="_blank"><i class="fab fa-github"></i> Source Code</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
             <div class="section-title">
-                <h2>My Experience</h2>
+                <h2>My Journey</h2>
+                <p>Academic and professional experience that shaped my technical expertise</p>
             </div>
             <div class="timeline">
                 <!-- Experience 1 -->
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">2025 - Present</div>
-                        <h3 class="timeline-title">Freelance Developer</h3>
-                        <p class="timeline-text">Developed and maintained web applications and databases for various clients, focusing on Python/Flask solutions with SQL Server backends.</p>
+                        <span class="timeline-date">2025 - Present</span>
+                        <h3 class="timeline-title">Freelance Full-Stack Developer</h3>
+                        <p class="timeline-text">Developed and maintained web applications and databases for various clients, focusing on Python/Flask solutions with SQL Server backends. Created responsive designs and optimized database schemas for performance.</p>
                     </div>
                 </div>
                 
                 <!-- Experience 2 -->
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">2020 - 2024</div>
+                        <span class="timeline-date">2020 - 2024</span>
                         <h3 class="timeline-title">Database Administrator</h3>
-                        <p class="timeline-text">Managed and optimized SQL Server databases, designed schemas, and created stored procedures in real world exprience project.</p>
+                        <p class="timeline-text">Managed and optimized SQL Server databases, designed schemas, and created stored procedures for real-world applications. Implemented data security measures and backup strategies.</p>
                     </div>
                 </div>
                 
                 <!-- Education -->
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">2025 - Present</div>
+                        <span class="timeline-date">2025 - Present</span>
                         <h3 class="timeline-title">BSc Computer Science</h3>
-                        <p class="timeline-text">Milton Margai Technical University - Currently in third year with focus on software development and database systems.</p>
+                        <p class="timeline-text">Milton Margai Technical University - Currently in third year with focus on software development, database systems, algorithms, and computer networks. Maintaining excellent academic standing while applying knowledge to practical projects.</p>
                     </div>
                 </div>
             </div>
@@ -853,15 +1146,16 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Get In Touch</h2>
+                <h2>Let's Connect</h2>
+                <p>I'm always open to discussing new opportunities and interesting projects</p>
             </div>
-            <div class="contact-info">
+            <div class="contact-content">
                 <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <h3>Email</h3>
-                    <a href="mailto:kamaraalgalie88@gmail.com">your.email@example.com</a>
+                    <a href="mailto:kamaraalgalie88@gmail.com">kamaraalgalie88@gmail.com</a>
                 </div>
                 
                 <div class="contact-card">
@@ -869,7 +1163,7 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3>WhatsApp</h3>
-                    <a href="https://wa.me/+23290527784" target="_blank">+232 34 670 787</a>
+                    <a href="https://wa.me/+23290527784" target="_blank">+232 905 27784</a>
                 </div>
                 
                 <div class="contact-card">
@@ -887,20 +1181,40 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="mmtc-logo.jpg" alt="Milton Margai Technical University Logo">
-                    <h2>Algalie Kamara</h2>
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-circle">AK</div>
+                        <div class="footer-logo-text">Algalie Kamara</div>
+                    </div>
+                    <p>Software Developer & Database Administrator specializing in creating efficient, scalable solutions with Python, Flask, and SQL Server technologies.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/Algalie Kamara" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/Algalie Kamara" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:kamaraalgalie@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="copyright">
-                    &copy; 2025 Algalie Kamara. dev work
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> kamaraalgalie88@gmail.com</p>
+                    <p><i class="fab fa-whatsapp"></i> +232 905 27784</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Freetown, Sierra Leone</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Algalie Kamara. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -912,31 +1226,87 @@
         
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Active navigation link on scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
                 }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, 10);
+                    } else {
+                        item.classList.remove('visible');
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
             });
         });
         
         // Animation on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.portfolio-item, .timeline-item, .contact-card');
+            const elements = document.querySelectorAll('.portfolio-item, .timeline-item, .contact-card, .skill-item');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
+                const screenPosition = window.innerHeight / 1.2;
                 
                 if (elementPosition < screenPosition) {
                     element.style.opacity = '1';
@@ -946,14 +1316,20 @@
         };
         
         // Set initial state for animated elements
-        document.querySelectorAll('.portfolio-item, .timeline-item, .contact-card').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.portfolio-item, .timeline-item, .contact-card, .skill-item').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger initial animation
+            setTimeout(() => {
+                animateOnScroll();
+            }, 300);
         });
         
         window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
