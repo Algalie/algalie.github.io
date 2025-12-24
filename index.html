@@ -425,43 +425,90 @@
             color: white;
         }
         
-        /* Portfolio Section */
-        .portfolio {
+        /* GitHub Projects Section */
+        .github-projects {
             background-color: var(--light-gray);
+            text-align: center;
         }
         
-        .portfolio-filter {
+        .github-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .github-container:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .github-icon {
+            font-size: 5rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        
+        .github-container:hover .github-icon {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .github-container h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .github-container p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .github-stats {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 50px;
+            gap: 30px;
+            margin-top: 40px;
             flex-wrap: wrap;
         }
         
-        .filter-btn {
-            padding: 10px 25px;
-            background-color: white;
-            border: none;
-            border-radius: 30px;
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
             font-weight: 500;
-            color: var(--dark);
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--box-shadow);
         }
         
-        .filter-btn.active, .filter-btn:hover {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+        /* Achievements Section */
+        .achievements {
+            background-color: white;
         }
         
-        .portfolio-grid {
+        .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
         
-        .portfolio-item {
+        .achievement-card {
             background-color: white;
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -471,70 +518,78 @@
             transform: translateY(30px);
         }
         
-        .portfolio-item.visible {
+        .achievement-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .portfolio-item:hover {
-            transform: translateY(-15px);
+        .achievement-card:hover {
+            transform: translateY(-10px);
             box-shadow: var(--box-shadow-hover);
         }
         
-        .portfolio-img {
-            height: 220px;
+        .achievement-badge {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            position: relative;
             overflow: hidden;
         }
         
-        .portfolio-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        .achievement-badge::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
         }
         
-        .portfolio-item:hover .portfolio-img img {
-            transform: scale(1.1);
+        .achievement-badge i {
+            font-size: 4rem;
+            z-index: 1;
         }
         
-        .portfolio-info {
+        .achievement-info {
             padding: 25px;
         }
         
-        .portfolio-info h3 {
+        .achievement-info h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: var(--secondary);
         }
         
-        .portfolio-info p {
+        .achievement-info .date {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--light-gray);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .achievement-info p {
             color: var(--gray);
             margin-bottom: 20px;
             font-size: 0.95rem;
         }
         
-        .portfolio-tags {
+        .achievement-actions {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .portfolio-tag {
-            background-color: var(--light-gray);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .portfolio-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .portfolio-links a {
+        .view-certificate {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -545,14 +600,14 @@
             transition: var(--transition);
         }
         
-        .portfolio-links a:hover {
+        .view-certificate:hover {
             color: var(--primary-dark);
             gap: 12px;
         }
         
         /* Experience Section */
         .experience {
-            background-color: white;
+            background-color: var(--light-gray);
         }
         
         .timeline {
@@ -649,7 +704,7 @@
         
         /* Contact Section */
         .contact {
-            background-color: var(--light-gray);
+            background-color: white;
         }
         
         .contact-content {
@@ -659,7 +714,7 @@
         }
         
         .contact-card {
-            background-color: white;
+            background-color: var(--light-gray);
             padding: 40px 30px;
             border-radius: var(--border-radius);
             text-align: center;
@@ -806,6 +861,10 @@
                 grid-template-columns: 1fr;
             }
             
+            .achievements-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
             .timeline::before {
                 left: 30px;
             }
@@ -866,7 +925,7 @@
                 height: 280px;
             }
             
-            .portfolio-grid {
+            .achievements-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -876,6 +935,11 @@
             
             .skills-list {
                 grid-template-columns: 1fr;
+            }
+            
+            .github-stats {
+                flex-direction: column;
+                gap: 20px;
             }
         }
         
@@ -907,6 +971,10 @@
             .timeline-content {
                 padding: 20px;
             }
+            
+            .github-container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -922,7 +990,8 @@
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#github">Projects</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -939,9 +1008,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Innovative Solutions Through Code & Data</h1>
-                    <h2>Computer Programmer</h2>
+                    <h2>Software Developer & Database Administrator</h2>
+                    <p>Third-year Computer Science student at Milton Margai Technical University with 2+ years of professional experience in full-stack development and database management. Specializing in Python, Flask, SQL Server, and modern web technologies.</p>
                     <div class="hero-buttons">
-                        <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                        <a href="#github" class="btn btn-primary">View My Projects</a>
                         <a href="#contact" class="btn btn-outline">Contact Me</a>
                     </div>
                     <div class="social-icons">
@@ -975,15 +1045,8 @@
                 </div>
                 <div class="about-text">
                     <h3>Building Digital Solutions That Matter</h3>
-                    <p>
-                        I am a Computer Programmer specializing in Software Engineering, with a strong foundation in building scalable, secure, and database-driven applications. I hold a Bachelor of Science (BSc) degree in Computer Science and have practical experience across full-stack web development, backend engineering, and system design.
-
-My technical skill set includes frontend technologies such as HTML, CSS, and JavaScript; backend development using Python (Flask) and C#; and database management with Microsoft SQL Server, PostgreSQL, and Oracle. I have designed and implemented real-world academic and professional systems, including grading management systems, marketing management platforms, and enterprise-style CRUD applications featuring authentication and role-based access control.
-
-In parallel with application development, I am actively developing expertise in cloud infrastructure, system architecture, and cybersecurity fundamentals. I emphasize clean, maintainable code and software engineering best practices, with a focus on building systems that are reliable, secure, and scalable. I also maintain a strong interest in data-driven applications and the future integration of analytics and intelligent automation into modern software solutions.
-
-I am a disciplined, goal-oriented engineer with a strong problem-solving mindset and a commitment to continuous learning. My career objective is to grow as a professional software engineer while deepening my capabilities in cloud technologies, secure application development, and modern system design.
-                    </p>
+                    <p>I'm a passionate software developer and database administrator based in Freetown, Sierra Leone. Currently pursuing my BSc in Computer Science at Milton Margai Technical University, I bridge the gap between academic theory and real-world application.</p>
+                    <p>With over 2 years of professional experience, I've developed a strong foundation in both front-end and back-end technologies, with a particular focus on database design, optimization, and management.</p>
                     <div class="skills-container">
                         <h4>Technical Expertise</h4>
                         <div class="skills-list">
@@ -1030,79 +1093,133 @@ I am a disciplined, goal-oriented engineer with a strong problem-solving mindset
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
+    <!-- GitHub Projects Section -->
+    <section id="github" class="github-projects">
         <div class="container">
             <div class="section-title">
-                <h2>My Portfolio</h2>
-                <p>A selection of my recent projects showcasing my technical skills and problem-solving abilities</p>
+                <h2>My Projects</h2>
+                <p>All my coding projects are hosted on GitHub. Click below to explore my repositories</p>
             </div>
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="database">Database</button>
-                <button class="filter-btn" data-filter="university">University Projects</button>
-            </div>
-            <div class="portfolio-grid">
-                <!-- Project 1 -->
-                <div class="portfolio-item visible" data-category="web university">
-                    <div class="portfolio-img">
-                        <img src="Capture.PNG" alt="University GPA Grading System">
+            <div class="github-container">
+                <div class="github-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h3>Explore My GitHub</h3>
+                <p>I maintain all my software development projects on GitHub. From full-stack web applications to database systems and university projects, you can find the complete source code, documentation, and commit history for all my work.</p>
+                <a href="https://github.com/yourusername" target="_blank" class="btn btn-primary">Visit My GitHub</a>
+                
+                <div class="github-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Projects</span>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>University GPAs and exams management portal</h3>
-                        <p>A comprehensive system for calculating and managing student GPAs, developed for Milton Margai Technical University with Django backend and SQL Server database.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">Django</span>
-                            <span class="portfolio-tag">SQL Server</span>
-                            <span class="portfolio-tag">University</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="gpa_calculator.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="https://github.com/yourusername/gpa-system" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Commits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Achievements & Certificates</h2>
+                <p>Academic accomplishments and professional certifications that demonstrate my expertise</p>
+            </div>
+            <div class="achievements-grid">
+                <!-- Achievement 1 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h3>Dean's List Honors</h3>
+                        <span class="date">2023 - 2024</span>
+                        <p>Achieved Dean's List recognition for academic excellence at Milton Margai Technical University, maintaining a GPA of 3.8+ in Computer Science courses.</p>
+                        <div class="achievement-actions">
+                            <a href="#" class="view-certificate">View Certificate <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="portfolio-item visible" data-category="web university">
-                    <div class="portfolio-img">
-                        <img src="Capture2.PNG" alt="Student Portal">
+                <!-- Achievement 2 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-database"></i>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>Student Portal</h3>
-                        <p>An interactive portal for students to access course materials, grades, and university announcements with responsive design and secure authentication.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">HTML/CSS</span>
-                            <span class="portfolio-tag">JavaScript</span>
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">Flask</span>
-                        </div>
-                        <div class="portfolio-links">
-                            <a href="student_results.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="https://github.com/yourusername/student-portal" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    <div class="achievement-info">
+                        <h3>SQL Server Certification</h3>
+                        <span class="date">2023</span>
+                        <p>Microsoft Certified: Azure Database Administrator Associate, demonstrating expertise in SQL Server database management, optimization, and security.</p>
+                        <div class="achievement-actions">
+                            <a href="#" class="view-certificate">View Certificate <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 3 -->
-                <div class="portfolio-item visible" data-category="web database">
-                    <div class="portfolio-img">
-                        <img src="Capture3.PNG" alt="E-commerce Platform">
+                <!-- Achievement 3 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-code"></i>
                     </div>
-                    <div class="portfolio-info">
-                        <h3>Marketing management system</h3>
-                        <p>A full-featured online shopping platform with business intelligent and real time date analytics, product management, cart functionality, payment processing, and advanced database design.</p>
-                        <div class="portfolio-tags">
-                            <span class="portfolio-tag">Python</span>
-                            <span class="portfolio-tag">Django</span>
-                            <span class="portfolio-tag">SQL Server</span>
-                            <span class="portfolio-tag">JavaScript</span>
+                    <div class="achievement-info">
+                        <h3>Python Development Certification</h3>
+                        <span class="date">2022</span>
+                        <p>Certified Python Developer with Flask specialization, validating skills in backend development, REST API creation, and web application architecture.</p>
+                        <div class="achievement-actions">
+                            <a href="#" class="view-certificate">View Certificate <i class="fas fa-external-link-alt"></i></a>
                         </div>
-                        <div class="portfolio-links">
-                            <a href="index copy.html" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="https://github.com/yourusername/ecommerce-platform" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
+                </div>
+                
+                <!-- Achievement 4 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h3>University Hackathon Winner</h3>
+                        <span class="date">2023</span>
+                        <p>First place in Milton Margai Technical University Annual Hackathon for developing an innovative student portal solution using Python and SQL Server.</p>
+                        <div class="achievement-actions">
+                            <a href="#" class="view-certificate">View Award <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievement 5 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h3>Web Development Certification</h3>
+                        <span class="date">2022</span>
+                        <p>Full-Stack Web Development certification covering HTML5, CSS3, JavaScript, responsive design principles, and modern frontend frameworks.</p>
+                        <div class="achievement-actions">
+                            <a href="#" class="view-certificate">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievement 6 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h3>Academic Excellence Award</h3>
+                        <span class="date">2024</span>
+                        <p>Recipient of Milton Margai Technical University's Academic Excellence Award for outstanding performance in Computer Science and Software Engineering courses.</p>
+                        <div class="achievement-actions">
+                            <a href="#" class="view-certificate">View Award <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1206,7 +1323,8 @@ I am a disciplined, goal-oriented engineer with a strong problem-solving mindset
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#github">Projects</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
                         <li><a href="#experience">Experience</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1277,38 +1395,9 @@ I am a disciplined, goal-oriented engineer with a strong problem-solving mindset
             });
         });
         
-        // Portfolio filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.classList.add('visible');
-                        }, 10);
-                    } else {
-                        item.classList.remove('visible');
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
-        // Animation on scroll
+        // Animation on scroll for achievement cards
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.portfolio-item, .timeline-item, .contact-card, .skill-item');
+            const elements = document.querySelectorAll('.achievement-card, .timeline-item, .contact-card, .skill-item');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -1323,7 +1412,7 @@ I am a disciplined, goal-oriented engineer with a strong problem-solving mindset
         
         // Set initial state for animated elements
         window.addEventListener('load', () => {
-            document.querySelectorAll('.portfolio-item, .timeline-item, .contact-card, .skill-item').forEach(element => {
+            document.querySelectorAll('.achievement-card, .timeline-item, .contact-card, .skill-item').forEach(element => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(30px)';
                 element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1336,6 +1425,21 @@ I am a disciplined, goal-oriented engineer with a strong problem-solving mindset
         });
         
         window.addEventListener('scroll', animateOnScroll);
+        
+        // Update GitHub stats with your actual data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Replace these with your actual GitHub data
+            const githubStats = {
+                projects: 15,
+                commits: 500,
+                languages: 5
+            };
+            
+            // Update the stats display
+            document.querySelector('.stat-number:nth-child(1)').textContent = githubStats.projects + '+';
+            document.querySelector('.stat-number:nth-child(2)').textContent = githubStats.commits + '+';
+            document.querySelector('.stat-number:nth-child(3)').textContent = githubStats.languages;
+        });
     </script>
 </body>
 </html>
