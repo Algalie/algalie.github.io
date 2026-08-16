@@ -138,140 +138,31 @@
       color: #1a73e8;
     }
 
-    /* Professional Hero Section (Replacing Google search result) */
-    .hero-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 20px;
-      padding: 60px 40px;
-      margin: 30px 0;
-      color: white;
+    /* Simple text intro */
+    .simple-intro {
+      padding: 50px 0 20px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
 
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-    }
-
-    .hero-section::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 300px;
-      height: 300px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 50%;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      padding: 8px 20px;
-      border-radius: 25px;
-      font-size: 0.9rem;
+    .simple-intro h1 {
+      font-size: 2.2rem;
       font-weight: 500;
-      margin-bottom: 20px;
-      letter-spacing: 0.5px;
+      color: #202124;
+      margin-bottom: 10px;
     }
 
-    .hero-section h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
+    .simple-intro .subtitle {
+      font-size: 1.2rem;
+      color: #5f6368;
       margin-bottom: 15px;
-      line-height: 1.2;
     }
 
-    .hero-section .hero-subtitle {
-      font-size: 1.3rem;
-      font-weight: 300;
-      margin-bottom: 20px;
-      opacity: 0.95;
-    }
-
-    .hero-section .hero-description {
+    .simple-intro .description {
       font-size: 1rem;
+      color: #4d5156;
       max-width: 700px;
-      margin: 0 auto 30px;
-      opacity: 0.9;
+      margin: 0 auto;
       line-height: 1.8;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-btn {
-      padding: 14px 30px;
-      border-radius: 30px;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-btn-primary {
-      background: white;
-      color: #667eea;
-    }
-
-    .hero-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-btn-outline {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-    }
-
-    .hero-btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      display: block;
-    }
-
-    .hero-stat-label {
-      font-size: 0.85rem;
-      opacity: 0.9;
     }
 
     /* main content style */
@@ -659,24 +550,8 @@
         gap: 25px;
       }
 
-      .hero-section {
-        padding: 40px 25px;
-      }
-
-      .hero-section h1 {
-        font-size: 2rem;
-      }
-
-      .hero-section .hero-subtitle {
-        font-size: 1.1rem;
-      }
-
-      .hero-stats {
-        gap: 25px;
-      }
-
-      .hero-stat-number {
-        font-size: 1.5rem;
+      .simple-intro h1 {
+        font-size: 1.8rem;
       }
 
       .profile-card {
@@ -753,18 +628,8 @@
         font-size: 1.2rem;
       }
 
-      .hero-section h1 {
-        font-size: 1.8rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hero-btn {
-        width: 100%;
-        justify-content: center;
+      .simple-intro h1 {
+        font-size: 1.5rem;
       }
 
       .project-title {
@@ -810,39 +675,12 @@
   </header>
 
   <main class="container main-content" id="searchableArea">
-    <!-- Professional Hero Section -->
-    <div class="hero-section" data-search="algalie kamara system engineer cloud software">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fas fa-code"></i> System Engineer & Cloud Architect
-        </div>
-        <h1>Algalie Kamara</h1>
-        <div class="hero-subtitle">Building Scalable Cloud & Software Solutions</div>
-        <div class="hero-description">
-          I specialize in designing and building modern digital systems across cloud infrastructure, mobile applications, and intelligent platforms. From Django-powered backends to React Native mobile apps, I deliver end-to-end solutions that solve real-world challenges.
-        </div>
-        <div class="hero-buttons">
-          <a href="https://github.com/Algalie" target="_blank" class="hero-btn hero-btn-primary">
-            <i class="fab fa-github"></i> View GitHub
-          </a>
-          <a href="mailto:kamaraalgalie88@gmail.com" class="hero-btn hero-btn-outline">
-            <i class="fas fa-envelope"></i> Contact Me
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-number">10+</span>
-            <span class="hero-stat-label">Projects Delivered</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-number">4+</span>
-            <span class="hero-stat-label">Years Experience</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-number">5+</span>
-            <span class="hero-stat-label">Technologies</span>
-          </div>
-        </div>
+    <!-- Simple text intro -->
+    <div class="simple-intro" data-search="algalie kamara system engineer cloud software">
+      <h1>Algalie Kamara</h1>
+      <div class="subtitle">System Engineer | Cloud & Software Engineering</div>
+      <div class="description">
+        I design and build modern digital solutions across mobile, web, and intelligent systems. My focus is on cloud infrastructure, software engineering best practices, and AI-powered analytics.
       </div>
     </div>
 
@@ -852,7 +690,7 @@
         <img src="WhatsApp Image 2026-08-16 at 7.57.25 AM.jpeg" alt="Algalie Kamara - System Engineer">
       </div>
       <div class="profile-details">
-        <h2>Algalie Kamara</h2>
+        <h2>About Me</h2>
         <div class="title">System Engineer · Cloud & Software Engineering</div>
         <p>I design and build modern digital solutions across mobile, web, and intelligent systems. My focus is on cloud infrastructure, software engineering best practices, and AI-powered analytics. From full-stack development to cloud-native architectures, I deliver reliable, scalable products.</p>
         <div class="tech-badges">
@@ -1069,7 +907,7 @@
     // simple client-side search filtering
     function filterContent() {
       const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .hero-section, #searchableArea .certificate-card, #searchableArea .additional-photo-section, #searchableArea > div');
+      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .simple-intro, #searchableArea .certificate-card, #searchableArea .additional-photo-section, #searchableArea > div');
       
       if (query === '') {
         allItems.forEach(item => {
