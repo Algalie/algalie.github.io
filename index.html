@@ -138,42 +138,140 @@
       color: #1a73e8;
     }
 
-    /* search result style */
-    .result-meta {
-      color: #70757a;
-      font-size: 0.85rem;
-      margin: 14px 0 10px;
+    /* Professional Hero Section (Replacing Google search result) */
+    .hero-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin: 30px 0;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .result-title {
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: #1a0dab;
-      text-decoration: none;
-      margin-bottom: 4px;
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
       display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-section h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
       line-height: 1.2;
     }
 
-    .result-title:hover {
-      text-decoration: underline;
+    .hero-section .hero-subtitle {
+      font-size: 1.3rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+      opacity: 0.95;
     }
 
-    .result-url {
-      font-size: 0.9rem;
-      color: #006621;
-      margin-bottom: 8px;
+    .hero-section .hero-description {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
       display: flex;
-      align-items: center;
-      gap: 6px;
+      gap: 15px;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
-    .result-description {
-      color: #4d5156;
-      font-size: 1rem;
-      max-width: 700px;
-      margin-bottom: 22px;
+    .hero-btn {
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-btn-primary {
+      background: white;
+      color: #667eea;
+    }
+
+    .hero-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .hero-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .hero-stat-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
     }
 
     /* main content style */
@@ -347,11 +445,11 @@
       text-decoration: underline;
     }
 
-    /* Certificates section */
+    /* Certificates section with images */
     .certificates-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
       margin: 20px 0;
     }
 
@@ -359,12 +457,10 @@
       background: white;
       border: 1px solid #e8eaed;
       border-radius: 12px;
-      padding: 20px;
+      overflow: hidden;
       transition: all 0.3s;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
     }
 
     .certificate-card:hover {
@@ -372,20 +468,30 @@
       transform: translateY(-3px);
     }
 
-    .certificate-icon {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, #1a73e8, #8b5cf6);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
-      color: white;
-      font-size: 2rem;
+    .certificate-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #f8f9fa;
     }
 
-    .certificate-card h3 {
+    .certificate-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .certificate-card:hover .certificate-image img {
+      transform: scale(1.05);
+    }
+
+    .certificate-info {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .certificate-info h3 {
       font-size: 1.1rem;
       font-weight: 500;
       color: #202124;
@@ -402,7 +508,7 @@
       margin-bottom: 10px;
     }
 
-    .certificate-card p {
+    .certificate-info p {
       color: #5f6368;
       font-size: 0.9rem;
     }
@@ -553,8 +659,24 @@
         gap: 25px;
       }
 
-      .result-title {
-        font-size: 1.4rem;
+      .hero-section {
+        padding: 40px 25px;
+      }
+
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+
+      .hero-section .hero-subtitle {
+        font-size: 1.1rem;
+      }
+
+      .hero-stats {
+        gap: 25px;
+      }
+
+      .hero-stat-number {
+        font-size: 1.5rem;
       }
 
       .profile-card {
@@ -598,6 +720,10 @@
         grid-template-columns: 1fr;
       }
 
+      .certificate-image {
+        height: 250px;
+      }
+
       .algavon-highlight {
         padding: 20px;
       }
@@ -627,12 +753,18 @@
         font-size: 1.2rem;
       }
 
-      .result-title {
-        font-size: 1.2rem;
+      .hero-section h1 {
+        font-size: 1.8rem;
       }
 
-      .result-description {
-        font-size: 0.9rem;
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-btn {
+        width: 100%;
+        justify-content: center;
       }
 
       .project-title {
@@ -647,6 +779,10 @@
       .profile-photo img {
         width: 120px;
         height: 120px;
+      }
+
+      .certificate-image {
+        height: 200px;
       }
     }
   </style>
@@ -674,14 +810,40 @@
   </header>
 
   <main class="container main-content" id="searchableArea">
-    <!-- Main result-like intro -->
-    <div class="result-meta">About 1,230,000 results (0.38 seconds) · Algalie Kamara</div>
-    <a href="#" class="result-title">Algalie Kamara — System Engineer | Cloud & Software Engineering</a>
-    <div class="result-url">
-      <i class="fas fa-globe"></i> https://algalie.tech/portfolio
-    </div>
-    <div class="result-description">
-      System Engineer specializing in cloud architecture, scalable software systems, and intelligent applications. Experience across mobile, web, and intelligent platforms. Founder of Algavon.
+    <!-- Professional Hero Section -->
+    <div class="hero-section" data-search="algalie kamara system engineer cloud software">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-code"></i> System Engineer & Cloud Architect
+        </div>
+        <h1>Algalie Kamara</h1>
+        <div class="hero-subtitle">Building Scalable Cloud & Software Solutions</div>
+        <div class="hero-description">
+          I specialize in designing and building modern digital systems across cloud infrastructure, mobile applications, and intelligent platforms. From Django-powered backends to React Native mobile apps, I deliver end-to-end solutions that solve real-world challenges.
+        </div>
+        <div class="hero-buttons">
+          <a href="https://github.com/Algalie" target="_blank" class="hero-btn hero-btn-primary">
+            <i class="fab fa-github"></i> View GitHub
+          </a>
+          <a href="mailto:kamaraalgalie88@gmail.com" class="hero-btn hero-btn-outline">
+            <i class="fas fa-envelope"></i> Contact Me
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number">10+</span>
+            <span class="hero-stat-label">Projects Delivered</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">4+</span>
+            <span class="hero-stat-label">Years Experience</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">5+</span>
+            <span class="hero-stat-label">Technologies</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Profile with photo -->
@@ -777,42 +939,49 @@
       <a href="https://github.com/Algalie" target="_blank" class="project-link"><i class="fab fa-github"></i> Check GitHub</a>
     </div>
 
-    <!-- Certificates Section - FIXED AND VISIBLE -->
-    <h2 class="section-heading" style="display: block !important; visibility: visible !important;">
-      <i class="fas fa-certificate"></i> Certificates & Achievements
-    </h2>
+    <!-- Certificates Section WITH IMAGES -->
+    <h2 class="section-heading"><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
     
-    <div class="certificates-grid" style="display: grid !important; visibility: visible !important;">
-      <div class="certificate-card" data-search="data safety information security cisco certificate" style="display: flex !important; visibility: visible !important;">
-        <div class="certificate-icon">
-          <i class="fas fa-shield-alt"></i>
+    <div class="certificates-grid">
+      <!-- Certificate 1 -->
+      <div class="certificate-card" data-search="data safety information security cisco certificate">
+        <div class="certificate-image">
+          <img src="IMG-20260121-WA0000.jpg" alt="Data Safety and Information Security Certificate" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:#f1f3f4;color:#5f6368;\'><i class=\'fas fa-shield-alt\' style=\'font-size:3rem;color:#1a73e8;\'></i></div>'">
         </div>
-        <h3>Data Safety and Information Security</h3>
-        <span class="certificate-date">2023 - 2024</span>
-        <p>Protect data and information from unauthorized access and writing clean and secure code. Achievement from Cisco.</p>
+        <div class="certificate-info">
+          <h3>Data Safety and Information Security</h3>
+          <span class="certificate-date">2023 - 2024</span>
+          <p>Protect data and information from unauthorized access and writing clean and secure code. Achievement from Cisco.</p>
+        </div>
       </div>
 
-      <div class="certificate-card" data-search="cybersecurity cisco certified intro" style="display: flex !important; visibility: visible !important;">
-        <div class="certificate-icon">
-          <i class="fas fa-lock"></i>
+      <!-- Certificate 2 -->
+      <div class="certificate-card" data-search="cybersecurity cisco certified intro">
+        <div class="certificate-image">
+          <img src="IMG-20260121-WA0002.jpg" alt="Cybersecurity Certificate" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:#f1f3f4;color:#5f6368;\'><i class=\'fas fa-lock\' style=\'font-size:3rem;color:#1a73e8;\'></i></div>'">
         </div>
-        <h3>Cybersecurity</h3>
-        <span class="certificate-date">2023</span>
-        <p>Cisco Certified Intro to Cybersecurity. Skills on developing systems and databases with security best practices.</p>
+        <div class="certificate-info">
+          <h3>Cybersecurity</h3>
+          <span class="certificate-date">2023</span>
+          <p>Cisco Certified Intro to Cybersecurity. Skills on developing systems and databases with security best practices.</p>
+        </div>
       </div>
 
-      <div class="certificate-card" data-search="iot digital transformation cisco networking academy" style="display: flex !important; visibility: visible !important;">
-        <div class="certificate-icon">
-          <i class="fas fa-microchip"></i>
+      <!-- Certificate 3 -->
+      <div class="certificate-card" data-search="iot digital transformation cisco networking academy">
+        <div class="certificate-image">
+          <img src="IMG-20260121-WA0001.jpg" alt="IoT and Digital Transformation Certificate" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:#f1f3f4;color:#5f6368;\'><i class=\'fas fa-microchip\' style=\'font-size:3rem;color:#1a73e8;\'></i></div>'">
         </div>
-        <h3>IoT and Digital Transformation</h3>
-        <span class="certificate-date">2022</span>
-        <p>Certified IoT and Digital Transformation from Cisco Networking Academy.</p>
+        <div class="certificate-info">
+          <h3>IoT and Digital Transformation</h3>
+          <span class="certificate-date">2022</span>
+          <p>Certified IoT and Digital Transformation from Cisco Networking Academy.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Second Photo Section - ADDED -->
-    <div class="additional-photo-section" data-search="algalie kamara photo">
+    <!-- Second Photo Section -->
+    <div class="additional-photo-section" data-search="algalie kamara photo professional">
       <h3 style="font-size: 1.3rem; font-weight: 400; margin-bottom: 20px; color: #202124;">
         <i class="fas fa-camera"></i> Professional Snapshot
       </h3>
@@ -900,7 +1069,7 @@
     // simple client-side search filtering
     function filterContent() {
       const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .result-meta, #searchableArea .result-title, #searchableArea .result-url, #searchableArea .result-description, #searchableArea .certificate-card, #searchableArea .additional-photo-section, #searchableArea > div');
+      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .hero-section, #searchableArea .certificate-card, #searchableArea .additional-photo-section, #searchableArea > div');
       
       if (query === '') {
         allItems.forEach(item => {
