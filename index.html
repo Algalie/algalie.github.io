@@ -407,6 +407,30 @@
       font-size: 0.9rem;
     }
 
+    /* Second photo section */
+    .additional-photo-section {
+      margin: 40px 0;
+      padding: 30px;
+      background: #f8f9fa;
+      border-radius: 16px;
+      border: 1px solid #e8eaed;
+      text-align: center;
+    }
+
+    .additional-photo-section img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      margin-top: 15px;
+      color: #5f6368;
+      font-size: 0.9rem;
+    }
+
     /* Algavon section */
     .algavon-highlight {
       background: #f8f9fa;
@@ -753,10 +777,13 @@
       <a href="https://github.com/Algalie" target="_blank" class="project-link"><i class="fab fa-github"></i> Check GitHub</a>
     </div>
 
-    <!-- Certificates Section -->
-    <h2 class="section-heading"><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
-    <div class="certificates-grid">
-      <div class="certificate-card" data-search="data safety information security cisco certificate">
+    <!-- Certificates Section - FIXED AND VISIBLE -->
+    <h2 class="section-heading" style="display: block !important; visibility: visible !important;">
+      <i class="fas fa-certificate"></i> Certificates & Achievements
+    </h2>
+    
+    <div class="certificates-grid" style="display: grid !important; visibility: visible !important;">
+      <div class="certificate-card" data-search="data safety information security cisco certificate" style="display: flex !important; visibility: visible !important;">
         <div class="certificate-icon">
           <i class="fas fa-shield-alt"></i>
         </div>
@@ -765,7 +792,7 @@
         <p>Protect data and information from unauthorized access and writing clean and secure code. Achievement from Cisco.</p>
       </div>
 
-      <div class="certificate-card" data-search="cybersecurity cisco certified intro">
+      <div class="certificate-card" data-search="cybersecurity cisco certified intro" style="display: flex !important; visibility: visible !important;">
         <div class="certificate-icon">
           <i class="fas fa-lock"></i>
         </div>
@@ -774,13 +801,24 @@
         <p>Cisco Certified Intro to Cybersecurity. Skills on developing systems and databases with security best practices.</p>
       </div>
 
-      <div class="certificate-card" data-search="iot digital transformation cisco networking academy">
+      <div class="certificate-card" data-search="iot digital transformation cisco networking academy" style="display: flex !important; visibility: visible !important;">
         <div class="certificate-icon">
           <i class="fas fa-microchip"></i>
         </div>
         <h3>IoT and Digital Transformation</h3>
         <span class="certificate-date">2022</span>
         <p>Certified IoT and Digital Transformation from Cisco Networking Academy.</p>
+      </div>
+    </div>
+
+    <!-- Second Photo Section - ADDED -->
+    <div class="additional-photo-section" data-search="algalie kamara photo">
+      <h3 style="font-size: 1.3rem; font-weight: 400; margin-bottom: 20px; color: #202124;">
+        <i class="fas fa-camera"></i> Professional Snapshot
+      </h3>
+      <img src="IMG_4345.jpg" alt="Algalie Kamara - Professional Photo" onerror="this.style.display='none'">
+      <div class="photo-caption">
+        <i class="fas fa-user-circle"></i> Algalie Kamara · System Engineer
       </div>
     </div>
 
@@ -862,10 +900,13 @@
     // simple client-side search filtering
     function filterContent() {
       const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .result-meta, #searchableArea .result-title, #searchableArea .result-url, #searchableArea .result-description, #searchableArea .certificate-card, #searchableArea > div');
+      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .result-meta, #searchableArea .result-title, #searchableArea .result-url, #searchableArea .result-description, #searchableArea .certificate-card, #searchableArea .additional-photo-section, #searchableArea > div');
       
       if (query === '') {
-        allItems.forEach(item => item.style.display = '');
+        allItems.forEach(item => {
+          item.style.display = '';
+          item.style.visibility = 'visible';
+        });
         return;
       }
 
@@ -874,8 +915,10 @@
         const dataSearch = item.getAttribute('data-search') || '';
         if (text.includes(query) || dataSearch.includes(query)) {
           item.style.display = '';
+          item.style.visibility = 'visible';
         } else {
           item.style.display = 'none';
+          item.style.visibility = 'hidden';
         }
       });
     }
