@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Algalie Kamara · System Engineer | Cloud & Software</title>
-  <!-- Google Fonts: system-like clean font -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -36,6 +36,19 @@
       justify-content: space-between;
       padding: 18px 0 12px;
       border-bottom: 1px solid #e8eaed;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
     }
 
     .logo-area {
@@ -58,7 +71,7 @@
     }
 
     .logo-text {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 400;
       color: #5f6368;
       letter-spacing: -0.5px;
@@ -80,6 +93,7 @@
       padding: 10px 18px;
       transition: all 0.2s;
       border: 1px solid transparent;
+      min-width: 200px;
     }
 
     .search-bar:hover, .search-bar:focus-within {
@@ -152,6 +166,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      flex-wrap: wrap;
     }
 
     .result-description {
@@ -179,6 +194,8 @@
 
     .profile-photo {
       flex: 0 0 160px;
+      display: flex;
+      justify-content: center;
     }
 
     .profile-photo img {
@@ -188,6 +205,11 @@
       object-fit: cover;
       border: 3px solid #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .profile-details {
+      flex: 1;
+      min-width: 280px;
     }
 
     .profile-details h2 {
@@ -207,6 +229,7 @@
       color: #3c4043;
       max-width: 650px;
       margin-bottom: 16px;
+      font-size: 0.95rem;
     }
 
     .tech-badges {
@@ -258,19 +281,13 @@
       gap: 8px;
     }
 
-    .projects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      margin: 20px 0;
-    }
-
     .project-item {
       border: 1px solid #e8eaed;
       border-radius: 12px;
       padding: 22px;
       background: white;
       transition: box-shadow 0.2s;
+      margin-bottom: 20px;
     }
 
     .project-item:hover {
@@ -278,10 +295,11 @@
     }
 
     .project-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 400;
       color: #1a0dab;
       margin-bottom: 6px;
+      word-break: break-word;
     }
 
     .project-subtitle {
@@ -318,6 +336,7 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 0.9rem;
+      word-break: break-all;
     }
 
     .project-link i {
@@ -326,6 +345,66 @@
 
     .project-link:hover {
       text-decoration: underline;
+    }
+
+    /* Certificates section */
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .certificate-card {
+      background: white;
+      border: 1px solid #e8eaed;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .certificate-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .certificate-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #1a73e8, #8b5cf6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .certificate-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #202124;
+      margin-bottom: 5px;
+    }
+
+    .certificate-date {
+      display: inline-block;
+      background: #e8f0fe;
+      color: #1a73e8;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .certificate-card p {
+      color: #5f6368;
+      font-size: 0.9rem;
     }
 
     /* Algavon section */
@@ -342,6 +421,7 @@
       align-items: center;
       gap: 15px;
       margin-bottom: 15px;
+      flex-wrap: wrap;
     }
 
     .algavon-logo img {
@@ -381,6 +461,20 @@
       margin-bottom: 6px;
     }
 
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 15px 0;
+    }
+
+    .services-list div {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #3c4043;
+    }
+
     .footer {
       background: #f8f9fa;
       padding: 30px 0;
@@ -408,26 +502,127 @@
       color: #1a73e8;
     }
 
+    /* Mobile Responsiveness */
     @media (max-width: 768px) {
-      .google-header {
-        flex-direction: column;
-        gap: 15px;
-        align-items: stretch;
+      .container {
+        padding: 0 15px;
       }
+
+      .header-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .logo-area {
+        justify-content: center;
+      }
+
       .search-bar {
         margin: 0;
         max-width: 100%;
+        min-width: 100%;
       }
+
+      .header-actions {
+        justify-content: center;
+        gap: 25px;
+      }
+
+      .result-title {
+        font-size: 1.4rem;
+      }
+
       .profile-card {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 20px;
       }
+
       .profile-photo {
         flex: 0 0 auto;
       }
-      .result-title {
+
+      .profile-photo img {
+        width: 140px;
+        height: 140px;
+      }
+
+      .profile-details {
+        min-width: 100%;
+        text-align: center;
+      }
+
+      .tech-badges {
+        justify-content: center;
+      }
+
+      .github-link {
+        margin-top: 15px;
+      }
+
+      .project-title {
+        font-size: 1.1rem;
+      }
+
+      .project-item {
+        padding: 18px;
+      }
+
+      .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .algavon-highlight {
+        padding: 20px;
+      }
+
+      .algavon-logo {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .services-list {
+        justify-content: center;
+      }
+
+      .section-heading {
         font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.3rem;
+      }
+
+      .logo-symbol {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+      }
+
+      .result-title {
+        font-size: 1.2rem;
+      }
+
+      .result-description {
+        font-size: 0.9rem;
+      }
+
+      .project-title {
+        font-size: 1rem;
+      }
+
+      .tech-badge {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+      }
+
+      .profile-photo img {
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
@@ -435,19 +630,21 @@
 <body>
   <!-- Google-style header with search -->
   <header class="google-header">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-      <div class="logo-area">
-        <div class="logo-symbol">AK</div>
-        <div class="logo-text"><strong>Algalie</strong>Kamara</div>
-      </div>
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search systems, cloud, projects..." id="searchInput" oninput="filterContent()" aria-label="Search portfolio">
-      </div>
-      <div class="header-actions">
-        <a href="https://github.com/Algalie" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="mailto:kamaraalgalie88@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://wa.me/+23290527784" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <div class="container">
+      <div class="header-container">
+        <div class="logo-area">
+          <div class="logo-symbol">AK</div>
+          <div class="logo-text"><strong>Algalie</strong>Kamara</div>
+        </div>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search systems, cloud, projects..." id="searchInput" oninput="filterContent()" aria-label="Search portfolio">
+        </div>
+        <div class="header-actions">
+          <a href="https://github.com/Algalie" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:kamaraalgalie88@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://wa.me/+23290527784" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
       </div>
     </div>
   </header>
@@ -463,8 +660,8 @@
       System Engineer specializing in cloud architecture, scalable software systems, and intelligent applications. Experience across mobile, web, and intelligent platforms. Founder of Algavon.
     </div>
 
-    <!-- Profile with photo: first image WhatsApp Image 2026-08-16 at 7.57.25 AM.jpeg -->
-    <div class="profile-card">
+    <!-- Profile with photo -->
+    <div class="profile-card" data-search="algalie kamara system engineer cloud software django native postgres oracle sql server">
       <div class="profile-photo">
         <img src="WhatsApp Image 2026-08-16 at 7.57.25 AM.jpeg" alt="Algalie Kamara - System Engineer">
       </div>
@@ -473,22 +670,23 @@
         <div class="title">System Engineer · Cloud & Software Engineering</div>
         <p>I design and build modern digital solutions across mobile, web, and intelligent systems. My focus is on cloud infrastructure, software engineering best practices, and AI-powered analytics. From full-stack development to cloud-native architectures, I deliver reliable, scalable products.</p>
         <div class="tech-badges">
-          <span class="tech-badge"><i class="fab fa-python"></i> Python/Flask</span>
+          <span class="tech-badge"><i class="fab fa-python"></i> Django</span>
           <span class="tech-badge"><i class="fas fa-cloud"></i> AWS/Azure</span>
-          <span class="tech-badge"><i class="fas fa-database"></i> SQL/NoSQL</span>
-          <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> Oracle</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> SQL Server</span>
+          <span class="tech-badge"><i class="fas fa-mobile-alt"></i> React Native</span>
           <span class="tech-badge"><i class="fas fa-robot"></i> AI/ML</span>
-          <span class="tech-badge"><i class="fas fa-mobile-alt"></i> Mobile</span>
         </div>
         <a href="https://github.com/Algalie" target="_blank" class="github-link"><i class="fab fa-github"></i> @Algalie on GitHub</a>
       </div>
     </div>
 
-    <!-- Projects Section (Google-like results) -->
+    <!-- Projects Section -->
     <h2 class="section-heading"><i class="fas fa-code-branch"></i> Projects & GitHub Repositories</h2>
 
-    <!-- Project 1: LMS with Analytics (AI transcript + chatbot) -->
-    <div class="project-item" data-search="learning management system ai transcript chatbot mobile web">
+    <!-- Project 1: LMS with Analytics -->
+    <div class="project-item" data-search="learning management system ai transcript chatbot django react native postgresql">
       <div class="project-title">Development-of-a-Learning-Management-System-with-Student-Performance-Analytics-Progress-Tracking</div>
       <div class="project-subtitle">Public repository · Multi-portal platform (Web + Mobile)</div>
       <div class="project-description">
@@ -498,23 +696,23 @@
         <span class="project-tag">AI Transcript</span>
         <span class="project-tag">AI Chatbot</span>
         <span class="project-tag">GPA Analytics</span>
-        <span class="project-tag">Flask</span>
+        <span class="project-tag">Django</span>
         <span class="project-tag">React</span>
         <span class="project-tag">PostgreSQL</span>
-        <span class="project-tag">Mobile app</span>
+        <span class="project-tag">React Native</span>
       </div>
       <a href="https://github.com/Algalie/Development-of-a-Learning-Management-System-with-Student-Performance-Analytics-Progress-Tracking" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
     </div>
 
-    <!-- Project 2: Student mobile app for LMS -->
-    <div class="project-item" data-search="student mobile app transcript gpa grades chatbot administrative">
+    <!-- Project 2: Student mobile app -->
+    <div class="project-item" data-search="student mobile app transcript gpa grades chatbot react native">
       <div class="project-title">Student-mobile-app-for-Development-of-a-Learning-Management-System-project</div>
       <div class="project-subtitle">Public · Mobile companion for LMS</div>
       <div class="project-description">
-        Student mobile app to view all transcripts, current GPA, grades, and an AI-powered chatbot for administrative questions. Seamlessly integrates with the LMS web portal.
+        Student mobile app to view all transcripts, current GPA, grades, and an AI-powered chatbot for administrative questions. Built with React Native for cross-platform compatibility. Seamlessly integrates with the LMS web portal.
       </div>
       <div class="project-tags">
-        <span class="project-tag">Flutter</span>
+        <span class="project-tag">React Native</span>
         <span class="project-tag">AI Chatbot</span>
         <span class="project-tag">REST API</span>
         <span class="project-tag">Transcript viewer</span>
@@ -522,47 +720,78 @@
       <a href="https://github.com/Algalie/Student-mobile-app-for-Development-of-a-Learning-Management-System-project" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
     </div>
 
-    <!-- Project 3: E-commerce system -->
-    <div class="project-item" data-search="ecommerce payment integration full stack">
+    <!-- Project 3: E-commerce -->
+    <div class="project-item" data-search="ecommerce payment integration django react native postgresql">
       <div class="project-title">E-Commerce System with Full Payment Integration</div>
       <div class="project-subtitle">Public · Full-stack online store</div>
       <div class="project-description">
-        Complete e-commerce platform with product management, cart, secure checkout, and full payment gateway integration (Stripe/PayPal). Built with scalability in mind.
+        Complete e-commerce platform with product management, cart, secure checkout, and full payment gateway integration (Stripe/PayPal). Built with Django backend and React Native for mobile shopping experience.
       </div>
       <div class="project-tags">
-        <span class="project-tag">Django/Flask</span>
-        <span class="project-tag">React</span>
+        <span class="project-tag">Django</span>
+        <span class="project-tag">React Native</span>
         <span class="project-tag">Stripe</span>
-        <span class="project-tag">MySQL</span>
+        <span class="project-tag">PostgreSQL</span>
         <span class="project-tag">Docker</span>
       </div>
       <a href="https://github.com/Algalie" target="_blank" class="project-link"><i class="fab fa-github"></i> Check GitHub</a>
     </div>
 
     <!-- Project 4: Restaurant system -->
-    <div class="project-item" data-search="restaurant system ordering payment kitchen">
+    <div class="project-item" data-search="restaurant system ordering payment django react native sql server">
       <div class="project-title">Restaurant Management System with Payment Integration</div>
       <div class="project-subtitle">Public · POS & online ordering</div>
       <div class="project-description">
-        Restaurant system with table management, menu digitalization, order tracking, and integrated payment solutions. Includes real-time kitchen display and reporting.
+        Restaurant system with table management, menu digitalization, order tracking, and integrated payment solutions. Includes real-time kitchen display and reporting. Built with Django and React Native.
       </div>
       <div class="project-tags">
-        <span class="project-tag">Node.js</span>
+        <span class="project-tag">Django</span>
         <span class="project-tag">React Native</span>
         <span class="project-tag">Payments</span>
-        <span class="project-tag">MongoDB</span>
+        <span class="project-tag">SQL Server</span>
       </div>
       <a href="https://github.com/Algalie" target="_blank" class="project-link"><i class="fab fa-github"></i> Check GitHub</a>
     </div>
 
-    <!-- Algavon company section with logo -->
+    <!-- Certificates Section -->
+    <h2 class="section-heading"><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
+    <div class="certificates-grid">
+      <div class="certificate-card" data-search="data safety information security cisco certificate">
+        <div class="certificate-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Data Safety and Information Security</h3>
+        <span class="certificate-date">2023 - 2024</span>
+        <p>Protect data and information from unauthorized access and writing clean and secure code. Achievement from Cisco.</p>
+      </div>
+
+      <div class="certificate-card" data-search="cybersecurity cisco certified intro">
+        <div class="certificate-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3>Cybersecurity</h3>
+        <span class="certificate-date">2023</span>
+        <p>Cisco Certified Intro to Cybersecurity. Skills on developing systems and databases with security best practices.</p>
+      </div>
+
+      <div class="certificate-card" data-search="iot digital transformation cisco networking academy">
+        <div class="certificate-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3>IoT and Digital Transformation</h3>
+        <span class="certificate-date">2022</span>
+        <p>Certified IoT and Digital Transformation from Cisco Networking Academy.</p>
+      </div>
+    </div>
+
+    <!-- Algavon company section -->
     <div class="algavon-highlight" data-search="algavon technology company founder">
       <div class="algavon-logo">
         <img src="WhatsApp Image 2026-08-16 at 7.39.55 AM.jpeg" alt="Algavon logo">
         <h3>Algavon</h3>
       </div>
       <p><strong>About Algavon:</strong> Algavon is a technology company focused on building modern digital solutions that help businesses, organizations, and individuals solve real-world problems through technology.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; margin: 15px 0;">
+      <div class="services-list">
         <div><i class="fas fa-check-circle" style="color:#1a73e8;"></i> Web & Mobile Development</div>
         <div><i class="fas fa-check-circle" style="color:#1a73e8;"></i> Software Engineering</div>
         <div><i class="fas fa-check-circle" style="color:#1a73e8;"></i> Database Solutions</div>
@@ -584,7 +813,7 @@
       </div>
     </div>
 
-    <!-- System engineering focus / experience -->
+    <!-- System engineering focus -->
     <h2 class="section-heading"><i class="fas fa-cogs"></i> Systems Engineering & Cloud Focus</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 30px;">
       <div style="background: #f8f9fa; padding: 18px; border-radius: 12px;">
@@ -595,17 +824,22 @@
       <div style="background: #f8f9fa; padding: 18px; border-radius: 12px;">
         <i class="fas fa-mobile-alt" style="font-size: 1.8rem; color:#1a73e8;"></i>
         <h3 style="font-weight:500; margin:10px 0 6px;">Mobile & Web Systems</h3>
-        <p style="color:#3c4043; font-size:0.9rem;">Cross-platform mobile (Flutter/React Native) and modern web apps (React, Vue) with focus on performance and UX.</p>
+        <p style="color:#3c4043; font-size:0.9rem;">Cross-platform mobile (React Native) and modern web apps (React, Django) with focus on performance and UX.</p>
       </div>
       <div style="background: #f8f9fa; padding: 18px; border-radius: 12px;">
         <i class="fas fa-brain" style="font-size: 1.8rem; color:#1a73e8;"></i>
         <h3 style="font-weight:500; margin:10px 0 6px;">Intelligent Systems</h3>
         <p style="color:#3c4043; font-size:0.9rem;">AI integration: NLP chatbots, predictive analytics, AI-generated transcripts, and machine learning pipelines.</p>
       </div>
+      <div style="background: #f8f9fa; padding: 18px; border-radius: 12px;">
+        <i class="fas fa-database" style="font-size: 1.8rem; color:#1a73e8;"></i>
+        <h3 style="font-weight:500; margin:10px 0 6px;">Database Engineering</h3>
+        <p style="color:#3c4043; font-size:0.9rem;">Expertise in PostgreSQL, Oracle, and SQL Server. Database design, optimization, and secure data management.</p>
+      </div>
     </div>
 
-    <!-- Contact and footer note -->
-    <div style="margin: 30px 0 20px; background:#e8f0fe; border-radius: 12px; padding: 20px;">
+    <!-- Contact section -->
+    <div style="margin: 30px 0 20px; background:#e8f0fe; border-radius: 12px; padding: 20px; text-align: center;">
       <p style="font-size:1.1rem; margin-bottom:10px;"><i class="fas fa-envelope"></i> kamaraalgalie88@gmail.com | <i class="fab fa-whatsapp"></i> +232 905 27784 | Freetown, Sierra Leone</p>
       <p>GitHub: <a href="https://github.com/Algalie" target="_blank" style="color:#1a73e8;">github.com/Algalie</a></p>
     </div>
@@ -616,6 +850,7 @@
       <div class="footer-links">
         <a href="#">About</a>
         <a href="#">Projects</a>
+        <a href="#">Certificates</a>
         <a href="#">Algavon</a>
         <a href="#">Contact</a>
       </div>
@@ -627,7 +862,7 @@
     // simple client-side search filtering
     function filterContent() {
       const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .result-meta, #searchableArea .result-title, #searchableArea .result-url, #searchableArea .result-description, #searchableArea > div');
+      const allItems = document.querySelectorAll('#searchableArea .project-item, #searchableArea .algavon-highlight, #searchableArea .profile-card, #searchableArea .section-heading, #searchableArea .result-meta, #searchableArea .result-title, #searchableArea .result-url, #searchableArea .result-description, #searchableArea .certificate-card, #searchableArea > div');
       
       if (query === '') {
         allItems.forEach(item => item.style.display = '');
